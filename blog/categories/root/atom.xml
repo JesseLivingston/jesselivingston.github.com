@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[红顔生白发，痴心去不老]]></title>
-  <link href="http://JesseLivingston.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Root | 红顔生白发，痴心去不老]]></title>
+  <link href="http://JesseLivingston.github.io/blog/categories/root/atom.xml" rel="self"/>
   <link href="http://JesseLivingston.github.io/"/>
   <updated>2013-08-23T21:28:52+08:00</updated>
   <id>http://JesseLivingston.github.io/</id>
@@ -32,15 +32,15 @@
 
 <p>2.1 Root the phone, unzip the one click root tool file, set the executable privilege to RootLinux.sh file, then execute it with <strong>sh</strong> shell:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$sh RootLinux.sh</span></code></pre></td></tr></table></div></figure>
-
+<p><code>
+$sh RootLinux.sh
+</code></p>
 
 <p>2.2 After root success, I can find the <strong>SuperSu</strong> icon/app on my phone, install the recovery apk to sdcard with:</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$adb install -s RazrBootstrap.apk</span></code></pre></td></tr></table></div></figure>
-
+<p><code>
+$adb install -s RazrBootstrap.apk
+</code></p>
 
 <p>2.3 After install the recovery tool success, we can run it and click <strong>Reboot Recovery</strong>, double wipes, and install from sdcard.</p>
 

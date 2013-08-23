@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>浮桴书屋</title>
+  <title>红顔生白发，痴心去不老</title>
   <meta name="author" content="Jesse Livingston">
 
   
-  <meta name="description" content=" Blog Archives Recent Posts twitter
-Follow @aries_tiger Twitter Tweets by @aries_tiger Google+ 性浪微勃 ">
+  <meta name="description" content="1. Prepare Firstly, I need the ROM file, as I plan to install miui on my XT910, get it from miui site. Secondly, I need a recovery app, I found this &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -22,7 +21,7 @@ Follow @aries_tiger Twitter Tweets by @aries_tiger Google+ 性浪微勃 ">
   <link rel="canonical" href="http://JesseLivingston.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="浮桴书屋" type="application/atom+xml">
+  <link href="/atom.xml" rel="alternate" title="红顔生白发，痴心去不老" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/lib/jquery.min.js"%3E%3C/script%3E'))</script>
@@ -32,14 +31,26 @@ Follow @aries_tiger Twitter Tweets by @aries_tiger Google+ 性浪微勃 ">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-43244268-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
 <body   >
   <header role="banner"><hgroup>
-  <h1><a href="/">浮桴书屋</a></h1>
+  <h1><a href="/">红顔生白发，痴心去不老</a></h1>
   
-    <h2>道不行，乘桴浮于海</h2>
+    <h2>问英雄何事难了</h2>
   
 </hgroup>
 
@@ -67,6 +78,76 @@ Follow @aries_tiger Twitter Tweets by @aries_tiger Google+ 性浪微勃 ">
       <div class="blog-index">
   
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/08/23/how-to-reinstall-the-system-for-motorola-xt910-from-sdcard-on-linux/">How to Reinstall the System for Motorola XT910 From Sdcard on Linux</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-08-23T21:22:00+08:00" pubdate data-updated="true">Aug 23<span>rd</span>, 2013</time>
+        
+         | <a href="/blog/2013/08/23/how-to-reinstall-the-system-for-motorola-xt910-from-sdcard-on-linux/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>1. Prepare</h3>
+
+<p>Firstly, I need the ROM file, as I plan to install miui on my XT910, <a href="http://bigota.d.miui.com/3.2.22/miui_Razr_3.2.22_864a742373_4.0.zip">get it from miui site</a>.</p>
+
+<p>Secondly, I need a recovery app, I found this, <a href="http://pan.baidu.com/share/link?shareid=575036&amp;uk=3644169171">RazrBootstrap.apk</a></p>
+
+<p>Thirdly, as the RazrBootstrap need super user privilege, I need to <strong>root</strong> my phone, I found a <a href="http://downloadandroidrom.com/file/DroidRazr/rooting/DroidRazrRoot.com_ICS.zip">one click root tool</a>.</p>
+
+<p>I also need the <a href="http://developer.android.com/sdk/index.html">android sdk</a>.</p>
+
+<h3>2. Steps</h3>
+
+<p>2.1 Root the phone, unzip the one click root tool file, set the executable privilege to RootLinux.sh file, then execute it with <strong>sh</strong> shell:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$sh RootLinux.sh</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.2 After root success, I can find the <strong>SuperSu</strong> icon/app on my phone, install the recovery apk to sdcard with:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$adb install -s RazrBootstrap.apk</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.3 After install the recovery tool success, we can run it and click <strong>Reboot Recovery</strong>, double wipes, and install from sdcard.</p>
+
+<p>2.4 Done!</p>
+
+<h3>3. Appendix</h3>
+
+<p><a href="http://forum.xda-developers.com/showthread.php?t=1342567">[ROOT] ROOT DROID RAZR XT910/XT912 [Win/Mac/Linux][2.3.6][ICS]</a></p>
+
+<p><a href="http://www.shuaji.la/jiaocheng/moto-734.html">MOTO XT910刷Recovery教程</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
     <a href="/blog/archives">Blog Archives</a>
@@ -79,7 +160,40 @@ Follow @aries_tiger Twitter Tweets by @aries_tiger Google+ 性浪微勃 ">
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
+      <li class="post">
+        <a href="/blog/2013/08/23/how-to-reinstall-the-system-for-motorola-xt910-from-sdcard-on-linux/">How to Reinstall the System for Motorola XT910 From Sdcard on Linux</a>
+      </li>
+    
   </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/jesselivingston">@jesselivingston</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jesselivingston',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
 </section>
 
 
@@ -106,14 +220,22 @@ Follow @aries_tiger Twitter Tweets by @aries_tiger Google+ 性浪微勃 ">
 </section>
 
 
+
 <section>
   <h1>性浪微勃</h1>
   <ul id="weibo">
     <li>
-<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1628776550&verifier=275352cd&dpc=1"></iframe>
+      <iframe width="100%" 
+              height="550" 
+              class="share_self"  
+              frameborder="0" 
+              scrolling="no"
+              src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=3&isTitle=1&noborder=1&isWeibo=1&isFans=1&uid=1628776550&verifier=275352cd&dpc=1">
+      </iframe>
     </li>
   </ul>
 </section>
+
 
   
 </aside>
@@ -153,6 +275,14 @@ Follow @aries_tiger Twitter Tweets by @aries_tiger Google+ 性浪微勃 ">
 }(document, 'script', 'facebook-jssdk'));</script>
 
 
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
 
 
 
