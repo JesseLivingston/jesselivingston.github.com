@@ -4,7 +4,7 @@
   <title><![CDATA[Category: apache | 红顔生白发，痴心却不老]]></title>
   <link href="http://JesseLivingston.github.io/blog/categories/apache/atom.xml" rel="self"/>
   <link href="http://JesseLivingston.github.io/"/>
-  <updated>2013-08-24T10:26:42+08:00</updated>
+  <updated>2013-08-24T20:56:59+08:00</updated>
   <id>http://JesseLivingston.github.io/</id>
   <author>
     <name><![CDATA[Jesse Livingston]]></name>
@@ -95,7 +95,11 @@ sudo apachectl -k start
 
 <p>If you encounter the problem like <strong>apachectl command not found</strong>, replace the apachectl with it&rsquo;s absolutely path.</p>
 
-<h3>4. Appdendix</h3>
+<h3>4. Uninstall</h3>
+
+<p><a href="http://www.ehow.com/how_5148463_uninstall-apache-server.html">Check this post</a></p>
+
+<h3>5. Appdendix</h3>
 
 <p><a href="http://httpd.apache.org/docs/current/install.html">http://httpd.apache.org/docs/current/install.html</a></p>
 
