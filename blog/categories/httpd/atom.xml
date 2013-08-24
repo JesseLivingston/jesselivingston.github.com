@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: httpd | 红顔生白发，痴心却不老]]></title>
+  <link href="http://JesseLivingston.github.io/blog/categories/httpd/atom.xml" rel="self"/>
+  <link href="http://JesseLivingston.github.io/"/>
+  <updated>2013-08-24T10:26:42+08:00</updated>
+  <id>http://JesseLivingston.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse Livingston]]></name>
+    <email><![CDATA[livingston.chen@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Manual install apache2 from source code]]></title>
+    <link href="http://JesseLivingston.github.io/blog/2013/08/24/manual-install-apache2-from-source-code/"/>
+    <updated>2013-08-24T00:01:00+08:00</updated>
+    <id>http://JesseLivingston.github.io/blog/2013/08/24/manual-install-apache2-from-source-code</id>
+    <content type="html"><![CDATA[<h3>1. <a href="http://mirror.esocc.com/apache//httpd/httpd-2.4.6.tar.gz">Download apache source code</a></h3>
+
+<h3>2. Install</h3>
+
+<p><code>
+./configure --prefix=/home/jesse/Tools/apache2/
+</code></p>
+
+<h4>2.1</h4>
+
+<p>If you encounter problem like &ldquo;apr not found&rdquo;, <a href="http://archive.apache.org/dist/apr/">download the apr source code</a>, extract it, ./configure, make, sudo make install</p>
+
+<h4>2.2</h4>
+
+<p>If you encounter problem like &ldquo;apr-utils not found&rdquo;, <a href="http://archive.apache.org/dist/apr/">download the apr-utils source code</a>, extract it, make, sudo make install.</p>
+
+<h4>2.3</h4>
+
+<p>If you encounter problem like pcre not found, <a href="http://sourceforge.net/projects/pcre/files/pcre/8.33/">download the pcre</a>, extract it, make, sudo make install.</p>
+
+<p>then cd into apache source code directory, configure apache again.</p>
+
+<p><code>
+./configure --prefix=/home/jesse/Tools/apache2/
+</code></p>
+
+<p>then</p>
+
+<p><code>
+make
+</code></p>
+
+<p><code>
+make install
+</code></p>
+
+<h3>3. Startup</h3>
+
+<p>for convenience, add apache2/bin to PATH.</p>
+
+<p>startup the server</p>
+
+<p><code>
+sudo apachectl -k start
+</code></p>
+
+<h4>3.1</h4>
+
+<p>If you encounter prolblem like <strong>libpcre.so.1 not found</strong></p>
+
+<h5>a.</h5>
+
+<p>check the httpd dependencies:</p>
+
+<p><code>
+ldd httpd
+</code></p>
+
+<p>it will show you the dependencies,
+find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the <strong>/usr/local/lib</strong> directory, add a <strong>libc.conf</strong> file under <strong>/etc/ld.so.conf.d</strong> directory, add/append the path <strong>/usr/local/lib</strong> to the end of the file.</p>
+
+<p>If you found there is already a <strong>libc.conf</strong> file under <strong>/etc/ld.so.conf.d</strong> directory, skip this step to next.</p>
+
+<h5>b.</h5>
+
+<p><code>
+sudo ldconfig
+</code></p>
+
+<p>Then startup the server.</p>
+
+<p><code>
+sudo apachectl -k start
+</code></p>
+
+<p>If you encounter the problem like <strong>apachectl command not found</strong>, replace the apachectl with it&rsquo;s absolutely path.</p>
+
+<h3>4. Appdendix</h3>
+
+<p><a href="http://httpd.apache.org/docs/current/install.html">http://httpd.apache.org/docs/current/install.html</a></p>
+
+<p><a href="http://xtony.blog.51cto.com/3964396/836508">http://xtony.blog.51cto.com/3964396/836508</a></p>
+
+<p><a href="http://www.linuxnote.org/installing-apache-apr-not-found-solution-occurs.html">http://www.linuxnote.org/installing-apache-apr-not-found-solution-occurs.html</a></p>
+
+<p><a href="http://stackoverflow.com/questions/8501163/error-while-loading-shared-libraries-libpcre-so-0-cannot-open-shared-object-fi">http://stackoverflow.com/questions/8501163/error-while-loading-shared-libraries-libpcre-so-0-cannot-open-shared-object-fi</a></p>
+
+<p><a href="http://www.cnblogs.com/eastson/archive/2012/06/25/2561575.html">http://www.cnblogs.com/eastson/archive/2012/06/25/2561575.html</a></p>
+
+<p><a href="http://serverfault.com/questions/191180/what-does-apache2ctl-command-not-found-mean-if-apache-is-installed-and-runni0">http://serverfault.com/questions/191180/what-does-apache2ctl-command-not-found-mean-if-apache-is-installed-and-runni</a></p>
+
+<p><a href="http://www.cnblogs.com/alexqdh/archive/2012/11/20/2778251.html">http://www.cnblogs.com/alexqdh/archive/2012/11/20/2778251.html</a></p>
+]]></content>
+  </entry>
+  
+</feed>
