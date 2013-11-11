@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: sbt | 红顔生白发，痴心却不老]]></title>
+  <link href="http://JesseLivingston.github.io/blog/categories/sbt/atom.xml" rel="self"/>
+  <link href="http://JesseLivingston.github.io/"/>
+  <updated>2013-11-11T23:42:42+08:00</updated>
+  <id>http://JesseLivingston.github.io/</id>
+  <author>
+    <name><![CDATA[Jesse Livingston]]></name>
+    <email><![CDATA[livingston.chen@gmail.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[sbt-doc.1]]></title>
+    <link href="http://JesseLivingston.github.io/blog/2013/11/11/sbt-doc-dot-1/"/>
+    <updated>2013-11-11T22:44:00+08:00</updated>
+    <id>http://JesseLivingston.github.io/blog/2013/11/11/sbt-doc-dot-1</id>
+    <content type="html"><![CDATA[<h1>Install sbt and import sbt project to eclipse</h1>
+
+<p>download sbt-launch.jar, create a script file sbt with content:</p>
+
+<pre><code>SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256M"
+java $SBT_OPTS -jar `dirname $0`/sbt-launch.jar "$@"
+</code></pre>
+
+<p>make the script executable</p>
+
+<pre><code>chmod u+x sbt
+</code></pre>
+
+<p>put the directory which contains sbt in PATH env var.</p>
+
+<p>change sbt project to maven project</p>
+
+<pre><code>sbt make-pom
+</code></pre>
+
+<p>there will be a file in target directory, file name end with pom, copy it to project directory and rename it pom.xml.
+eclipsify the project:</p>
+
+<pre><code>mvn eclipse:eclipse
+</code></pre>
+
+<p>import the project to eclipse</p>
+]]></content>
+  </entry>
+  
+</feed>
