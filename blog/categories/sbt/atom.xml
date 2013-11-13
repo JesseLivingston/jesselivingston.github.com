@@ -4,7 +4,7 @@
   <title><![CDATA[Category: sbt | 红顔生白发，痴心却不老]]></title>
   <link href="http://JesseLivingston.github.io/blog/categories/sbt/atom.xml" rel="self"/>
   <link href="http://JesseLivingston.github.io/"/>
-  <updated>2013-11-11T23:42:42+08:00</updated>
+  <updated>2013-11-13T22:59:13+08:00</updated>
   <id>http://JesseLivingston.github.io/</id>
   <author>
     <name><![CDATA[Jesse Livingston]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Something confused in SBT and the build.sbt file]]></title>
+    <link href="http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/"/>
+    <updated>2013-11-13T22:43:00+08:00</updated>
+    <id>http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file</id>
+    <content type="html"><![CDATA[<p>I created a sbt project, in build.sbt, I set the scalaVersion to 2.10.2, as I want to learn akka, I add the akka dependency:</p>
+
+<pre><code>libraryDependencies += "com.typesafe.akka" % "akka-actor" % "2.2.3"
+</code></pre>
+
+<p>It worked fine!</p>
+
+<p>Then I want to write some code to try Spark, so I add</p>
+
+<pre><code>libraryDependencies += "org.apache.spark" % "spark-core_2.9.3" % "0.8.0-incubating"
+</code></pre>
+
+<p>When I use the &lsquo;sbt update&rsquo; command to update the dependencies, it broken.
+Now I know as it indicated in the artifactId, it&rsquo;s for scala 2.9.3, as it&rsquo;s the latest version of spark.</p>
+
+<p>I should change the scalaVersion AND I NEED TO change akka-actor&rsquo;s version, as the akka-actor.2.2.3 is for scala 2.10, the 2.0.5 is for scala 2.9.</p>
+
+<p>So finally, I need to change the scalaVersion to 2.9.3, change the akka-actor version to 2.0.5, and it works fine now.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[sbt-doc.1]]></title>

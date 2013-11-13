@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Manual install apache2 from source code - 红顔生白发，痴心却不老</title>
+  <title>Something confused in SBT and the build.sbt file - 红顔生白发，痴心却不老</title>
   <meta name="author" content="Jesse Livingston">
 
   
-  <meta name="description" content="1. Download apache source code 2. Install 1
-./configure --prefix=/home/jesse/Tools/apache2/ 2.1 If you encounter problem like &ldquo;apr not found& &hellip;">
+  <meta name="description" content="I created a sbt project, in build.sbt, I set the scalaVersion to 2.10.2, as I want to learn akka, I add the akka dependency: libraryDependencies += " &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://JesseLivingston.github.io/blog/2013/08/24/manual-install-apache2-from-source-code/">
+  <link rel="canonical" href="http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -83,7 +82,7 @@
   
   <header>
     
-      <h1 class="entry-title">Manual Install Apache2 From Source Code</h1>
+      <h1 class="entry-title">Something Confused in SBT and the build.sbt File</h1>
     
     
       <p class="meta">
@@ -99,7 +98,7 @@
   
 
 
-<time datetime="2013-08-24T00:01:00+08:00" pubdate data-updated="true">Aug 24<span>th</span>, 2013</time>
+<time datetime="2013-11-13T22:43:00+08:00" pubdate data-updated="true">Nov 13<span>th</span>, 2013</time>
         
          | <a href="#disqus_thread">Comments</a>
         
@@ -108,104 +107,24 @@
   </header>
 
 
-<div class="entry-content"><h3>1. <a href="http://mirror.esocc.com/apache//httpd/httpd-2.4.6.tar.gz">Download apache source code</a></h3>
+<div class="entry-content"><p>I created a sbt project, in build.sbt, I set the scalaVersion to 2.10.2, as I want to learn akka, I add the akka dependency:</p>
 
-<h3>2. Install</h3>
+<pre><code>libraryDependencies += "com.typesafe.akka" % "akka-actor" % "2.2.3"
+</code></pre>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./configure --prefix=/home/jesse/Tools/apache2/</span></code></pre></td></tr></table></div></figure>
+<p>It worked fine!</p>
 
+<p>Then I want to write some code to try Spark, so I add</p>
 
-<h4>2.1</h4>
+<pre><code>libraryDependencies += "org.apache.spark" % "spark-core_2.9.3" % "0.8.0-incubating"
+</code></pre>
 
-<p>If you encounter problem like &ldquo;apr not found&rdquo;, <a href="http://archive.apache.org/dist/apr/">download the apr source code</a>, extract it, ./configure, make, sudo make install</p>
+<p>When I use the &lsquo;sbt update&rsquo; command to update the dependencies, it broken.
+Now I know as it indicated in the artifactId, it&rsquo;s for scala 2.9.3, as it&rsquo;s the latest version of spark.</p>
 
-<h4>2.2</h4>
+<p>I should change the scalaVersion AND I NEED TO change akka-actor&rsquo;s version, as the akka-actor.2.2.3 is for scala 2.10, the 2.0.5 is for scala 2.9.</p>
 
-<p>If you encounter problem like &ldquo;apr-utils not found&rdquo;, <a href="http://archive.apache.org/dist/apr/">download the apr-utils source code</a>, extract it, make, sudo make install.</p>
-
-<h4>2.3</h4>
-
-<p>If you encounter problem like pcre not found, <a href="http://sourceforge.net/projects/pcre/files/pcre/8.33/">download the pcre</a>, extract it, make, sudo make install.</p>
-
-<p>then cd into apache source code directory, configure apache again.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>./configure --prefix=/home/jesse/Tools/apache2/</span></code></pre></td></tr></table></div></figure>
-
-
-<p>then</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make</span></code></pre></td></tr></table></div></figure>
-
-
-
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>make install</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>3. Startup</h3>
-
-<p>for convenience, add apache2/bin to PATH.</p>
-
-<p>startup the server</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl -k start</span></code></pre></td></tr></table></div></figure>
-
-
-<h4>3.1</h4>
-
-<p>If you encounter prolblem like <strong>libpcre.so.1 not found</strong></p>
-
-<h5>a.</h5>
-
-<p>check the httpd dependencies:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>ldd httpd</span></code></pre></td></tr></table></div></figure>
-
-
-<p>it will show you the dependencies,
-find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the <strong>/usr/local/lib</strong> directory, add a <strong>libc.conf</strong> file under <strong>/etc/ld.so.conf.d</strong> directory, add/append the path <strong>/usr/local/lib</strong> to the end of the file.</p>
-
-<p>If you found there is already a <strong>libc.conf</strong> file under <strong>/etc/ld.so.conf.d</strong> directory, skip this step to next.</p>
-
-<h5>b.</h5>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo ldconfig</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Then startup the server.</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>sudo apachectl -k start</span></code></pre></td></tr></table></div></figure>
-
-
-<p>If you encounter the problem like <strong>apachectl command not found</strong>, replace the apachectl with it&rsquo;s absolutely path.</p>
-
-<h3>4. Uninstall</h3>
-
-<p><a href="http://www.ehow.com/how_5148463_uninstall-apache-server.html">Check this post</a></p>
-
-<h3>5. Appdendix</h3>
-
-<p><a href="http://httpd.apache.org/docs/current/install.html">http://httpd.apache.org/docs/current/install.html</a></p>
-
-<p><a href="http://xtony.blog.51cto.com/3964396/836508">http://xtony.blog.51cto.com/3964396/836508</a></p>
-
-<p><a href="http://www.linuxnote.org/installing-apache-apr-not-found-solution-occurs.html">http://www.linuxnote.org/installing-apache-apr-not-found-solution-occurs.html</a></p>
-
-<p><a href="http://stackoverflow.com/questions/8501163/error-while-loading-shared-libraries-libpcre-so-0-cannot-open-shared-object-fi">http://stackoverflow.com/questions/8501163/error-while-loading-shared-libraries-libpcre-so-0-cannot-open-shared-object-fi</a></p>
-
-<p><a href="http://www.cnblogs.com/eastson/archive/2012/06/25/2561575.html">http://www.cnblogs.com/eastson/archive/2012/06/25/2561575.html</a></p>
-
-<p><a href="http://serverfault.com/questions/191180/what-does-apache2ctl-command-not-found-mean-if-apache-is-installed-and-runni0">http://serverfault.com/questions/191180/what-does-apache2ctl-command-not-found-mean-if-apache-is-installed-and-runni</a></p>
-
-<p><a href="http://www.cnblogs.com/alexqdh/archive/2012/11/20/2778251.html">http://www.cnblogs.com/alexqdh/archive/2012/11/20/2778251.html</a></p>
+<p>So finally, I need to change the scalaVersion to 2.9.3, change the akka-actor version to 2.0.5, and it works fine now.</p>
 </div>
 
 
@@ -228,12 +147,12 @@ find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the
   
 
 
-<time datetime="2013-08-24T00:01:00+08:00" pubdate data-updated="true">Aug 24<span>th</span>, 2013</time>
+<time datetime="2013-11-13T22:43:00+08:00" pubdate data-updated="true">Nov 13<span>th</span>, 2013</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/apache/'>apache</a>, <a class='category' href='/blog/categories/httpd/'>httpd</a>
+    <a class='category' href='/blog/categories/scala/'>Scala,</a>, <a class='category' href='/blog/categories/sbt/'>sbt</a>
   
 </span>
 
@@ -242,7 +161,7 @@ find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://JesseLivingston.github.io/blog/2013/08/24/manual-install-apache2-from-source-code/" data-via="aries_tiger" data-counturl="http://JesseLivingston.github.io/blog/2013/08/24/manual-install-apache2-from-source-code/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/" data-via="aries_tiger" data-counturl="http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -255,10 +174,8 @@ find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2013/08/23/how-to-reinstall-the-system-for-motorola-xt910-from-sdcard-on-linux/" title="Previous Post: How to reinstall the system for Motorola XT910 from sdcard on linux">&laquo; How to reinstall the system for Motorola XT910 from sdcard on linux</a>
+        <a class="basic-alignment left" href="/blog/2013/11/11/sbt-doc-dot-1/" title="Previous Post: sbt-doc.1">&laquo; sbt-doc.1</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/11/11/sbt-doc-dot-1/" title="Next Post: sbt-doc.1">sbt-doc.1 &raquo;</a>
       
     </p>
   </footer>
@@ -391,8 +308,8 @@ find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://JesseLivingston.github.io/blog/2013/08/24/manual-install-apache2-from-source-code/';
-        var disqus_url = 'http://JesseLivingston.github.io/blog/2013/08/24/manual-install-apache2-from-source-code/';
+        var disqus_identifier = 'http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/';
+        var disqus_url = 'http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/';
         var disqus_script = 'embed.js';
       
     (function () {

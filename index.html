@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse Livingston">
 
   
-  <meta name="description" content="Install sbt and import sbt project to eclipse download sbt-launch.jar, create a script file sbt with content: SBT_OPTS="-Xms512M -Xmx1536M -Xss1M -XX &hellip;">
+  <meta name="description" content="I created a sbt project, in build.sbt, I set the scalaVersion to 2.10.2, as I want to learn akka, I add the akka dependency: libraryDependencies += " &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,61 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/">Something Confused in SBT and the build.sbt File</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-13T22:43:00+08:00" pubdate data-updated="true">Nov 13<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I created a sbt project, in build.sbt, I set the scalaVersion to 2.10.2, as I want to learn akka, I add the akka dependency:</p>
+
+<pre><code>libraryDependencies += "com.typesafe.akka" % "akka-actor" % "2.2.3"
+</code></pre>
+
+<p>It worked fine!</p>
+
+<p>Then I want to write some code to try Spark, so I add</p>
+
+<pre><code>libraryDependencies += "org.apache.spark" % "spark-core_2.9.3" % "0.8.0-incubating"
+</code></pre>
+
+<p>When I use the &lsquo;sbt update&rsquo; command to update the dependencies, it broken.
+Now I know as it indicated in the artifactId, it&rsquo;s for scala 2.9.3, as it&rsquo;s the latest version of spark.</p>
+
+<p>I should change the scalaVersion AND I NEED TO change akka-actor&rsquo;s version, as the akka-actor.2.2.3 is for scala 2.10, the 2.0.5 is for scala 2.9.</p>
+
+<p>So finally, I need to change the scalaVersion to 2.9.3, change the akka-actor version to 2.0.5, and it works fine now.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -360,6 +415,10 @@ find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/">Something confused in SBT and the build.sbt file</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/11/11/sbt-doc-dot-1/">sbt-doc.1</a>

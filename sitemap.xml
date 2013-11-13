@@ -17,12 +17,18 @@
         <lastmod>2013-11-11T23:42:42+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://JesseLivingston.github.io/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/
+        </loc>
+        <lastmod>2013-11-13T22:58:57+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://JesseLivingston.github.io/new-page/</loc>
         <lastmod>2013-08-30T20:49:44+08:00</lastmod>
     </url>
     <url>
         <loc>http://JesseLivingston.github.io/</loc>
-        <lastmod>2013-11-11T23:42:42+08:00</lastmod>
+        <lastmod>2013-11-13T22:58:57+08:00</lastmod>
     </url>
     <url>
         <loc>http://JesseLivingston.github.io/robots.txt</loc>
@@ -38,6 +44,6 @@
     </url>
     <url>
         <loc>http://JesseLivingston.github.io/blog/archives/</loc>
-        <lastmod>2013-11-11T23:42:42+08:00</lastmod>
+        <lastmod>2013-11-13T22:58:57+08:00</lastmod>
     </url>
 </urlset>
