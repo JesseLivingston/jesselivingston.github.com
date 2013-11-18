@@ -9,7 +9,7 @@
   <meta name="author" content="Jesse Livingston">
 
   
-  <meta name="description" content="I created a sbt project, in build.sbt, I set the scalaVersion to 2.10.2, as I want to learn akka, I add the akka dependency: libraryDependencies += " &hellip;">
+  <meta name="description" content="Add scala librarys to sbt project I create a sbt code, add a sbt eclipse plugin to build.sbt, and turn the project to a eclipse project. In eclipse, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,65 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/11/18/add-scala-library-to-sbt-project/">Add Scala Library to Sbt Project</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-18T22:33:00+08:00" pubdate data-updated="true">Nov 18<span>th</span>, 2013</time>
+        
+         | <a href="/blog/2013/11/18/add-scala-library-to-sbt-project/#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Add scala librarys to sbt project</h1>
+
+<p>I create a sbt code, add a <a href="https://github.com/typesafehub/sbteclipse">sbt eclipse plugin</a> to build.sbt, and turn the project to a eclipse project.</p>
+
+<p>In eclipse, I add the the scala libraries(under my scala home) to the project, I write some actor code use the scala-actors.jar library, and it works fine in eclipse.</p>
+
+<p>But when I compile the code in sbt, it complains missing some classes. Seems I need to add these libraries for sbt in build.sbt or project/Build.scala.</p>
+
+<p>Solution:
+add below code to build.sbt</p>
+
+<pre><code>libraryDependencies &lt;++= (scalaVersion)(sv =&gt;
+    Seq(
+        "org.scala-lang" % "scala-library" % sv,
+        "org.scala-lang" % "scala-swing" % sv,
+        "org.scala-lang" % "scala-actors" % sv,
+        "org.scala-lang" % "scala-reflect" % sv
+    )
+)
+</code></pre>
+
+<p>Of course I defined scalaVersion to 2.10.3 in build.sbt, after that, invoke update action in sbt, then compile the code, it should work fine too.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -415,6 +474,10 @@ find the <strong>libpcre.so.1</strong> on you disk, suppose it&rsquo;s under the
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/11/18/add-scala-library-to-sbt-project/">add scala library to sbt project</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/">Something confused in SBT and the build.sbt file</a>

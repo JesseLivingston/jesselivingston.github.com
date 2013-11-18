@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: eclipse - 红顔生白发，痴心却不老</title>
+  <title>add scala library to sbt project - 红顔生白发，痴心却不老</title>
   <meta name="author" content="Jesse Livingston">
 
   
-  <meta name="description" content="Category: eclipse">
+  <meta name="description" content="Add scala librarys to sbt project I create a sbt code, add a sbt eclipse plugin to build.sbt, and turn the project to a eclipse project. In eclipse, &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://JesseLivingston.github.ioblog/categories/eclipse/">
+  <link rel="canonical" href="http://JesseLivingston.github.io/blog/2013/11/18/add-scala-library-to-sbt-project/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -78,36 +78,112 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Eclipse</h1>
+    
+      <h1 class="entry-title">Add Scala Library to Sbt Project</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-18T22:33:00+08:00" pubdate data-updated="true">Nov 18<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h1>Add scala librarys to sbt project</h1>
 
-  
-  <h2>2013</h2>
+<p>I create a sbt code, add a <a href="https://github.com/typesafehub/sbteclipse">sbt eclipse plugin</a> to build.sbt, and turn the project to a eclipse project.</p>
 
-<article>
-  
-<h1><a href="/blog/2013/11/11/sbt-doc-dot-1/">sbt-doc.1</a></h1>
-<time datetime="2013-11-11T22:44:00+08:00" pubdate><span class='month'>Nov</span> <span class='day'>11</span> <span class='year'>2013</span></time>
+<p>In eclipse, I add the the scala libraries(under my scala home) to the project, I write some actor code use the scala-actors.jar library, and it works fine in eclipse.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/eclipse/'>eclipse</a>, <a class='category' href='/blog/categories/sbt/'>sbt</a>, <a class='category' href='/blog/categories/scala/'>scala</a></span>
-</footer>
+<p>But when I compile the code in sbt, it complains missing some classes. Seems I need to add these libraries for sbt in build.sbt or project/Build.scala.</p>
 
+<p>Solution:
+add below code to build.sbt</p>
 
-</article>
+<pre><code>libraryDependencies &lt;++= (scalaVersion)(sv =&gt;
+    Seq(
+        "org.scala-lang" % "scala-library" % sv,
+        "org.scala-lang" % "scala-swing" % sv,
+        "org.scala-lang" % "scala-actors" % sv,
+        "org.scala-lang" % "scala-reflect" % sv
+    )
+)
+</code></pre>
 
+<p>Of course I defined scalaVersion to 2.10.3 in build.sbt, after that, invoke update action in sbt, then compile the code, it should work fine too.</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Jesse Livingston</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-11-18T22:33:00+08:00" pubdate data-updated="true">Nov 18<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://JesseLivingston.github.io/blog/2013/11/18/add-scala-library-to-sbt-project/" data-via="aries_tiger" data-counturl="http://JesseLivingston.github.io/blog/2013/11/18/add-scala-library-to-sbt-project/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/11/13/something-confused-in-sbt-and-the-build-dot-sbt-file/" title="Previous Post: Something confused in SBT and the build.sbt file">&laquo; Something confused in SBT and the build.sbt file</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -233,7 +309,10 @@
       var disqus_shortname = 'ariestiger';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://JesseLivingston.github.io/blog/2013/11/18/add-scala-library-to-sbt-project/';
+        var disqus_url = 'http://JesseLivingston.github.io/blog/2013/11/18/add-scala-library-to-sbt-project/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

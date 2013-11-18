@@ -4,7 +4,7 @@
   <title><![CDATA[红顔生白发，痴心却不老]]></title>
   <link href="http://JesseLivingston.github.io/atom.xml" rel="self"/>
   <link href="http://JesseLivingston.github.io/"/>
-  <updated>2013-11-13T22:59:13+08:00</updated>
+  <updated>2013-11-18T22:47:40+08:00</updated>
   <id>http://JesseLivingston.github.io/</id>
   <author>
     <name><![CDATA[Jesse Livingston]]></name>
@@ -12,6 +12,36 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[add scala library to sbt project]]></title>
+    <link href="http://JesseLivingston.github.io/blog/2013/11/18/add-scala-library-to-sbt-project/"/>
+    <updated>2013-11-18T22:33:00+08:00</updated>
+    <id>http://JesseLivingston.github.io/blog/2013/11/18/add-scala-library-to-sbt-project</id>
+    <content type="html"><![CDATA[<h1>Add scala librarys to sbt project</h1>
+
+<p>I create a sbt code, add a <a href="https://github.com/typesafehub/sbteclipse">sbt eclipse plugin</a> to build.sbt, and turn the project to a eclipse project.</p>
+
+<p>In eclipse, I add the the scala libraries(under my scala home) to the project, I write some actor code use the scala-actors.jar library, and it works fine in eclipse.</p>
+
+<p>But when I compile the code in sbt, it complains missing some classes. Seems I need to add these libraries for sbt in build.sbt or project/Build.scala.</p>
+
+<p>Solution:
+add below code to build.sbt</p>
+
+<pre><code>libraryDependencies &lt;++= (scalaVersion)(sv =&gt;
+    Seq(
+        "org.scala-lang" % "scala-library" % sv,
+        "org.scala-lang" % "scala-swing" % sv,
+        "org.scala-lang" % "scala-actors" % sv,
+        "org.scala-lang" % "scala-reflect" % sv
+    )
+)
+</code></pre>
+
+<p>Of course I defined scalaVersion to 2.10.3 in build.sbt, after that, invoke update action in sbt, then compile the code, it should work fine too.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Something confused in SBT and the build.sbt file]]></title>
