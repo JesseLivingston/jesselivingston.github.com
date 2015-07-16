@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[小重山]]></title>
-  <link href="http://jesselivingston.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Hadoop | 小重山]]></title>
+  <link href="http://jesselivingston.github.io/blog/categories/hadoop/atom.xml" rel="self"/>
   <link href="http://jesselivingston.github.io/"/>
   <updated>2015-07-17T02:11:48+08:00</updated>
   <id>http://jesselivingston.github.io/</id>
@@ -97,46 +97,6 @@
 
 <p><code>$ sbin/stop-dfs.sh</code></p></li>
 </ol>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Terminologies]]></title>
-    <link href="http://jesselivingston.github.io/blog/2015/05/28/terminologies/"/>
-    <updated>2015-05-28T22:59:38+08:00</updated>
-    <id>http://jesselivingston.github.io/blog/2015/05/28/terminologies</id>
-    <content type="html"><![CDATA[<ol>
-<li>不同的报单形式及对应中文</li>
-</ol>
-
-
-<table>
-<thead>
-<tr>
-<th style="text-align:center;">English            </th>
-<th style="text-align:center;">   中文           </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center;"><em>limit order</em>      </td>
-<td style="text-align:center;">  <strong>限价单</strong>      </td>
-</tr>
-<tr>
-<td style="text-align:center;"><em>stop order</em>       </td>
-<td style="text-align:center;">  <strong>止损单</strong>      </td>
-</tr>
-<tr>
-<td style="text-align:center;"><em>market order</em>     </td>
-<td style="text-align:center;">  <strong>市价单</strong>      </td>
-</tr>
-<tr>
-<td style="text-align:center;"><em>stop limit order</em> </td>
-<td style="text-align:center;">  <strong>限价止损单</strong>   </td>
-</tr>
-</tbody>
-</table>
 
 ]]></content>
   </entry>
