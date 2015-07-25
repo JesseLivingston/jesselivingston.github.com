@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | 小重山]]></title>
   <link href="http://jesselivingston.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://jesselivingston.github.io/"/>
-  <updated>2015-07-17T02:11:48+08:00</updated>
+  <updated>2015-07-25T16:55:32+08:00</updated>
   <id>http://jesselivingston.github.io/</id>
   <author>
     <name><![CDATA[Livingston Chen]]></name>
@@ -98,6 +98,8 @@
 <p><code>$ sbin/stop-dfs.sh</code></p></li>
 </ol>
 
+
+<p>好在以前接触过 solr，这种分布式的东西了解一点，后面再慢慢把这里面每一行都确切地搞清楚做了什么事。</p>
 ]]></content>
   </entry>
   

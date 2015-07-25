@@ -4,7 +4,7 @@
   <title><![CDATA[小重山]]></title>
   <link href="http://jesselivingston.github.io/atom.xml" rel="self"/>
   <link href="http://jesselivingston.github.io/"/>
-  <updated>2015-07-17T02:11:48+08:00</updated>
+  <updated>2015-07-25T16:55:32+08:00</updated>
   <id>http://jesselivingston.github.io/</id>
   <author>
     <name><![CDATA[Livingston Chen]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Create First Form Patch]]></title>
+    <link href="http://jesselivingston.github.io/blog/2015/07/25/create-first-form-patch/"/>
+    <updated>2015-07-25T16:52:58+08:00</updated>
+    <id>http://jesselivingston.github.io/blog/2015/07/25/create-first-form-patch</id>
+    <content type="html"><![CDATA[<p>用 Form 试了一下， 使用起来还不难， 后面可以再慢慢玩。
+<a href="http://jesselivingston.github.io/downloads/first_form_patch/first.form">first.form</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Hadoop 教程1]]></title>
@@ -98,6 +108,8 @@
 <p><code>$ sbin/stop-dfs.sh</code></p></li>
 </ol>
 
+
+<p>好在以前接触过 solr，这种分布式的东西了解一点，后面再慢慢把这里面每一行都确切地搞清楚做了什么事。</p>
 ]]></content>
   </entry>
   
