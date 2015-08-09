@@ -9,9 +9,8 @@
   <meta name="author" content="Livingston Chen">
 
   
-  <meta name="description" content="用 Form 试了一下， 使用起来还不难， 后面可以再慢慢玩。
-first.form
-">
+  <meta name="description" content="没法忍了，电信这个臭不要脸的东西，Idea 里下载 scala, sbt 的插件实在是没法成功，一个方法那就是把两个插件的下载链接放到百度云盘里去做离线下载，再从云盘下到本地，然后从磁盘安装插件就可以了
+对于外部创建的 sbt 项目，倒没必要去装个什么 idea 的 sbt plugin， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +84,103 @@ first.form
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/">Use Idea/Intellij to Develop Scala/Spark Project</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-10T00:20:06+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:20 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><ol>
+<li>没法忍了，电信这个臭不要脸的东西，Idea 里下载 scala, sbt 的插件实在是没法成功，一个方法那就是把两个插件的下载链接放到百度云盘里去做离线下载，再从云盘下到本地，然后从磁盘安装插件就可以了</li>
+<li>对于外部创建的 sbt 项目，倒没必要去装个什么 idea 的 sbt plugin， 装了上面的 Idea 的 sbt 插件就够了， 打开相应项目的 .sbt 文件，会提示你导入的，之后就可以看到相应的引入的依赖了</li>
+<li>基本上一个基本的开发环境就建起来了</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/26/programming-language/">Programming-language</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-26T15:33:39+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:33 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>咱家实在是记忆力差，几个快捷键先暂且记录下来：</p>
+
+<p><code>Ctrl + x + c</code>
+退出 Emacs</p>
+
+<p><code>Ctrl + x + f</code>
+打开文件</p>
+
+<p><code>Ctrl + x + s</code>
+保存文件</p>
+
+<p><code>Ctrl + c + s</code>
+打开 sml repl
+如果打开 sml repl 的时候报找不到 sml， 修改 ~/.emacs 在顶上添加两行</p>
+
+<p><code>(setenv "PATH" (concat "/usr/local/smlnj-110.75/bin:" (getenv "PATH")))</code></p>
+
+<p><code>(setq exec-path (cons "/usr/local/smlnj-110.75/bin" exec-path))</code></p>
+
+<p>虽然我对 emacs 配置的这一个个 function 不熟， 但咱也多少看得懂一点 lisp 语法， 这不就是把 PATH 环境变量 append 一个 smlnj 的 bin 路径， 再把 exec-path append 一个 smlnj 的 bin 路径嘛</p>
+
+<p>进入 sml repl 后， 引入一个文件用 <code>use</code>， 别忘了以分号结尾</p>
+
+<p><code>use "first.sml";</code></p>
+
+<hr />
+
+<p>关于表达式（expression），有三个重要的问题：</p>
+
+<ol>
+<li>语法（Syntax）</li>
+<li>类型检查规则（Type-checking rules）</li>
+<li>计算表达式的值的规则（Evaluation rules）</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/07/25/create-first-form-patch/">Create First Form Patch</a></h1>
     
     
@@ -102,7 +198,8 @@ first.form
 
 
   <div class="entry-content"><p>用 Form 试了一下， 使用起来还不难， 后面可以再慢慢玩。
-<a href="/downloads/first_form_patch/first.form">first.form</a></p>
+<a href="/downloads/first_form_patch/first.form">first.form</a>
+根据<a href="http://www.jianshu.com/p/cce67182403b">这上面</a>来的。</p>
 </div>
   
   
@@ -291,6 +388,14 @@ first.form
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/">Use Idea/Intellij to Develop Scala/Spark Project</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/26/programming-language/">Programming-language</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2015/07/25/create-first-form-patch/">Create First Form Patch</a>

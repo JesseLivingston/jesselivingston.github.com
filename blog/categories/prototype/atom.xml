@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Prototype | 小重山]]></title>
   <link href="http://jesselivingston.github.io/blog/categories/prototype/atom.xml" rel="self"/>
   <link href="http://jesselivingston.github.io/"/>
-  <updated>2015-07-25T16:55:32+08:00</updated>
+  <updated>2015-08-10T00:35:35+08:00</updated>
   <id>http://jesselivingston.github.io/</id>
   <author>
     <name><![CDATA[Livingston Chen]]></name>
@@ -19,7 +19,8 @@
     <updated>2015-07-25T16:52:58+08:00</updated>
     <id>http://jesselivingston.github.io/blog/2015/07/25/create-first-form-patch</id>
     <content type="html"><![CDATA[<p>用 Form 试了一下， 使用起来还不难， 后面可以再慢慢玩。
-<a href="/downloads/first_form_patch/first.form">first.form</a></p>
+<a href="/downloads/first_form_patch/first.form">first.form</a>
+根据<a href="http://www.jianshu.com/p/cce67182403b">这上面</a>来的。</p>
 ]]></content>
   </entry>
   

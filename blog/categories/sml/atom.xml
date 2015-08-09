@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sml | 小重山]]></title>
+  <link href="http://jesselivingston.github.io/blog/categories/sml/atom.xml" rel="self"/>
+  <link href="http://jesselivingston.github.io/"/>
+  <updated>2015-08-10T00:35:35+08:00</updated>
+  <id>http://jesselivingston.github.io/</id>
+  <author>
+    <name><![CDATA[Livingston Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Programming-language]]></title>
+    <link href="http://jesselivingston.github.io/blog/2015/07/26/programming-language/"/>
+    <updated>2015-07-26T15:33:39+08:00</updated>
+    <id>http://jesselivingston.github.io/blog/2015/07/26/programming-language</id>
+    <content type="html"><![CDATA[<p>咱家实在是记忆力差，几个快捷键先暂且记录下来：</p>
+
+<p><code>Ctrl + x + c</code>
+退出 Emacs</p>
+
+<p><code>Ctrl + x + f</code>
+打开文件</p>
+
+<p><code>Ctrl + x + s</code>
+保存文件</p>
+
+<p><code>Ctrl + c + s</code>
+打开 sml repl
+如果打开 sml repl 的时候报找不到 sml， 修改 ~/.emacs 在顶上添加两行</p>
+
+<p><code>(setenv "PATH" (concat "/usr/local/smlnj-110.75/bin:" (getenv "PATH")))</code></p>
+
+<p><code>(setq exec-path (cons "/usr/local/smlnj-110.75/bin" exec-path))</code></p>
+
+<p>虽然我对 emacs 配置的这一个个 function 不熟， 但咱也多少看得懂一点 lisp 语法， 这不就是把 PATH 环境变量 append 一个 smlnj 的 bin 路径， 再把 exec-path append 一个 smlnj 的 bin 路径嘛</p>
+
+<p>进入 sml repl 后， 引入一个文件用 <code>use</code>， 别忘了以分号结尾</p>
+
+<p><code>use "first.sml";</code></p>
+
+<hr />
+
+<p>关于表达式（expression），有三个重要的问题：</p>
+
+<ol>
+<li>语法（Syntax）</li>
+<li>类型检查规则（Type-checking rules）</li>
+<li>计算表达式的值的规则（Evaluation rules）</li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

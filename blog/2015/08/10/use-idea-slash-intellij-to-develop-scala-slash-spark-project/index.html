@@ -5,13 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Hadoop 教程1 - 小重山</title>
+  <title>Use Idea/Intellij to Develop Scala/Spark Project - 小重山</title>
   <meta name="author" content="Livingston Chen">
 
   
-  <meta name="description" content="环境： Mac, JDK8, Maven3 下载二进制版，这种 java 代码的玩意儿就同必要从源码去编译了吧，怎么方便怎么来
-先在单机上跑一下试试
-在下载下来的 hadoop 目录里，创建个 input 目录 $mkdir input 把 etc/hadoop 目录下的 xml 文件复制进去， &hellip;">
+  <meta name="description" content="没法忍了，电信这个臭不要脸的东西，Idea 里下载 scala, sbt 的插件实在是没法成功，一个方法那就是把两个插件的下载链接放到百度云盘里去做离线下载，再从云盘下到本地，然后从磁盘安装插件就可以了
+对于外部创建的 sbt 项目，倒没必要去装个什么 idea 的 sbt plugin， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://jesselivingston.github.io/blog/2015/07/17/hadoop-tutorial-1/">
+  <link rel="canonical" href="http://jesselivingston.github.io/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="小重山" type="application/atom+xml">
@@ -82,7 +81,7 @@
   
   <header>
     
-      <h1 class="entry-title">Hadoop 教程1</h1>
+      <h1 class="entry-title">Use Idea/Intellij to Develop Scala/Spark Project</h1>
     
     
       <p class="meta">
@@ -91,95 +90,19 @@
 
 
 
-<time class='entry-date' datetime='2015-07-17T01:30:36+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:30 am</span></time>
+<time class='entry-date' datetime='2015-08-10T00:20:06+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:20 am</span></time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>环境： Mac, JDK8, Maven3</p>
-
-<ol>
-<li>下载二进制版，这种 java 代码的玩意儿就同必要从源码去编译了吧，怎么方便怎么来</li>
-<li>先在单机上跑一下试试</li>
-<li><p>在下载下来的 hadoop 目录里，创建个 input 目录</p>
-
-<p> <code>$mkdir input
-</code></p></li>
-<li><p>把 etc/hadoop 目录下的 xml 文件复制进去，后面使用</p>
-
-<p> <code>$cp etc/hadoop/*.xml input
-</code></p></li>
-<li><p>统计一下 input 目录里的文件内容匹配 &lsquo;dfs[a-z.]+&rsquo; 的地方，结果放到 output 目录里</p>
-
-<p> <code>$bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar grep input output 'dfs[a-z.]+'
-</code></p></li>
-<li><p>查看一下 output 的内容</p>
-
-<p> <code>$cat output/*
-</code></p></li>
-<li><p>以伪分布式的方式玩玩，首先修改 etc/hadoop/core-site.xml:</p>
-
-<p> <code>&lt;configuration&gt;
-     &lt;property&gt;
-         &lt;name&gt;fs.defaultFS&lt;/name&gt;
-         &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;
-     &lt;/property&gt;
- &lt;/configuration&gt;
-</code></p></li>
-<li><p>修改 etc/hadoop/hdfs-site.xml:</p>
-
-<p> <code>&lt;configuration&gt;
-     &lt;property&gt;
-         &lt;name&gt;dfs.replication&lt;/name&gt;
-         &lt;value&gt;1&lt;/value&gt;
-     &lt;/property&gt;
- &lt;/configuration&gt;
-</code></p></li>
-<li><p>为了能够无密钥 ssh 登录 localhost，需要生成一对 dsa 算法的加密密钥，并把公钥放到 authorized_keys 里去</p>
-
-<p> <code>$ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa</code></p>
-
-<p> <code>$cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></p>
-
-<p> <code>$export HADOOP_PREFIX=/usr/local/hadoop</code></p>
-
-<p> 不要按官网上教程抄，HADOOP_PREFIX 中的下划线不需要转义</p></li>
-<li><p>格式化文件系统，虽然我目前也不是太了解 HDFS</p>
-
-<p><code>$bin/hdfs namenode -format</code></p></li>
-<li><p>以后台进程的形式启动 NameNode, DataNode:</p>
-
-<p><code>$sbin/start-dfs.sh</code>
-然后就可以打开 <a href="http://localhost:50070/">localhost:50070</a> 查看 NameNode 了</p></li>
-<li><p>建立 MapReduce jobs 执行必需的目录，我的用户名就是 admin:</p>
-
-<p><code>$bin/hdfs dfs -mkdir /user</code></p>
-
-<p><code>$bin/hdfs dfs -mkdir /user/admin</code></p></li>
-<li><p>把etc/hadoop 里的文件复制到分布式文件系统中</p>
-
-<p><code>$bin/hdfs dfs -put etc/hadoop input</code></p></li>
-<li><p>执行 example:</p>
-
-<p><code>$ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.1.jar grep input output 'dfs[a-z.]+'</code></p></li>
-<li><p>有两种方式查看上面的结果， 一种是先把分布式文件系统中的文件复制到本地文件系统中来再查看:</p>
-
-<p><code>$ bin/hdfs dfs -get output output</code></p>
-
-<p><code>$ cat output/*</code></p>
-
-<p>一种是直接查看分布式文件系统上的内容:</p>
-
-<p><code>$ bin/hdfs dfs -cat output/*</code></p></li>
-<li><p>与 11 配套的， 关闭后台的 NameNode, DataNode:</p>
-
-<p><code>$ sbin/stop-dfs.sh</code></p></li>
+<div class="entry-content"><ol>
+<li>没法忍了，电信这个臭不要脸的东西，Idea 里下载 scala, sbt 的插件实在是没法成功，一个方法那就是把两个插件的下载链接放到百度云盘里去做离线下载，再从云盘下到本地，然后从磁盘安装插件就可以了</li>
+<li>对于外部创建的 sbt 项目，倒没必要去装个什么 idea 的 sbt plugin， 装了上面的 Idea 的 sbt 插件就够了， 打开相应项目的 .sbt 文件，会提示你导入的，之后就可以看到相应的引入的依赖了</li>
+<li>基本上一个基本的开发环境就建起来了</li>
 </ol>
 
-
-<p>好在以前接触过 solr，这种分布式的东西了解一点，后面再慢慢把这里面每一行都确切地搞清楚做了什么事。</p>
 </div>
 
 
@@ -195,12 +118,12 @@
 
 
 
-<time class='entry-date' datetime='2015-07-17T01:30:36+08:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>17</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:30 am</span></time>
+<time class='entry-date' datetime='2015-08-10T00:20:06+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:20 am</span></time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/hadoop/'>hadoop</a>, <a class='category' href='/blog/categories/java/'>java</a>
+    <a class='category' href='/blog/categories/idea/'>idea</a>, <a class='category' href='/blog/categories/intellij/'>intellij</a>, <a class='category' href='/blog/categories/sbt/'>sbt</a>, <a class='category' href='/blog/categories/scala/'>scala</a>, <a class='category' href='/blog/categories/spark/'>spark</a>
   
 </span>
 
@@ -209,7 +132,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jesselivingston.github.io/blog/2015/07/17/hadoop-tutorial-1/" data-via="LivingstonChen" data-counturl="http://jesselivingston.github.io/blog/2015/07/17/hadoop-tutorial-1/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://jesselivingston.github.io/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/" data-via="LivingstonChen" data-counturl="http://jesselivingston.github.io/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/" >Tweet</a>
   
   
   <div class="g-plusone" data-size="medium"></div>
@@ -220,10 +143,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/05/28/terminologies/" title="Previous Post: terminologies">&laquo; terminologies</a>
+        <a class="basic-alignment left" href="/blog/2015/07/26/programming-language/" title="Previous Post: programming-language">&laquo; programming-language</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/07/25/create-first-form-patch/" title="Next Post: Create first Form patch">Create first Form patch &raquo;</a>
       
     </p>
   </footer>
@@ -289,8 +210,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://jesselivingston.github.io/blog/2015/07/17/hadoop-tutorial-1/';
-        var disqus_url = 'http://jesselivingston.github.io/blog/2015/07/17/hadoop-tutorial-1/';
+        var disqus_identifier = 'http://jesselivingston.github.io/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/';
+        var disqus_url = 'http://jesselivingston.github.io/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/';
         var disqus_script = 'embed.js';
       
     (function () {
