@@ -9,8 +9,7 @@
   <meta name="author" content="Livingston Chen">
 
   
-  <meta name="description" content="没法忍了，电信这个臭不要脸的东西，Idea 里下载 scala, sbt 的插件实在是没法成功，一个方法那就是把两个插件的下载链接放到百度云盘里去做离线下载，再从云盘下到本地，然后从磁盘安装插件就可以了
-对于外部创建的 sbt 项目，倒没必要去装个什么 idea 的 sbt plugin， &hellip;">
+  <meta name="description" content="首先是 clone master 代码 git clone https://github.com/apache/incubator-usergrid.git build mvn clean install -DskipTests=true 之后就可以到 stack 目录下去启动了 cd &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +77,73 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/08/20/usergrid-usage-notes/">Usergrid Usage Notes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-20T21:22:44+08:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:22 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>首先是 clone master 代码</p>
+
+<p><code>
+git clone https://github.com/apache/incubator-usergrid.git
+</code>
+build</p>
+
+<p><code>
+mvn clean install -DskipTests=true
+</code></p>
+
+<p>之后就可以到 stack 目录下去启动了</p>
+
+<p><code>
+cd launcher; java -jar target/usergrid-launcher-*.jar
+</code></p>
+
+<p>后台管理界面， 到 portal 中去</p>
+
+<p><code>./build.sh dev
+</code></p>
+
+<p>即可</p>
+
+<p>但 usergrid-launcher 报 cassandra jamm 相关的错误， 一种方式是可以在上面的启动命令中加参数</p>
+
+<p><code>
+java -javaagent:../rest/target/ROOT/WEB-INF/lib/jamm-0.2.5.jar -jar target/usergrid-launcher-*.jar
+</code></p>
+
+<p>目前是发现在 rest 中的 WEB-INF 下有 jamm 的 jar</p>
+
+<p>另一种就是改 launcher 目录下的 launch 脚本， 向 JVM_OPTS 中加上面的参数， 再使用 launch 脚本来启动应用</p>
+
+<p>启动时， 除了第一次勾选 Initialize Database on Start， 以后启动时都不要勾， 不然前面创建的数据就全没了</p>
+
+<p>另外， 启动时也可以加 -db, -init option 来指定是 Start Database 还是 Initialize Database， 这个详细情况只能看源代码了， 查看 launch 的 pom.xml 找到 main class 跟进去看就可以， 我就懒得把类名写在这儿了， 都还是比较简单的</p>
+
+<p>客户端在使用时， (以 iOS 为例) 初始化时把自己的 stack launcher 的地址作为 initWithOrganizationId:withApplicationID:baseURL 作为第三个参数传递过去， 客户端的文档比较差。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -390,6 +456,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/08/20/usergrid-usage-notes/">Usergrid Usage Notes</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/10/use-idea-slash-intellij-to-develop-scala-slash-spark-project/">Use Idea/Intellij to Develop Scala/Spark Project</a>
       </li>
     
@@ -403,10 +473,6 @@
     
       <li class="post">
         <a href="/blog/2015/07/17/hadoop-tutorial-1/">Hadoop 教程1</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/05/28/terminologies/">Terminologies</a>
       </li>
     
   </ul>

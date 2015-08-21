@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Cassandra | 小重山]]></title>
+  <link href="http://jesselivingston.github.io/blog/categories/cassandra/atom.xml" rel="self"/>
+  <link href="http://jesselivingston.github.io/"/>
+  <updated>2015-08-21T21:33:51+08:00</updated>
+  <id>http://jesselivingston.github.io/</id>
+  <author>
+    <name><![CDATA[Livingston Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Usergrid Usage Notes]]></title>
+    <link href="http://jesselivingston.github.io/blog/2015/08/20/usergrid-usage-notes/"/>
+    <updated>2015-08-20T21:22:44+08:00</updated>
+    <id>http://jesselivingston.github.io/blog/2015/08/20/usergrid-usage-notes</id>
+    <content type="html"><![CDATA[<p>首先是 clone master 代码</p>
+
+<p><code>
+git clone https://github.com/apache/incubator-usergrid.git
+</code>
+build</p>
+
+<p><code>
+mvn clean install -DskipTests=true
+</code></p>
+
+<p>之后就可以到 stack 目录下去启动了</p>
+
+<p><code>
+cd launcher; java -jar target/usergrid-launcher-*.jar
+</code></p>
+
+<p>后台管理界面， 到 portal 中去</p>
+
+<p><code>./build.sh dev
+</code></p>
+
+<p>即可</p>
+
+<p>但 usergrid-launcher 报 cassandra jamm 相关的错误， 一种方式是可以在上面的启动命令中加参数</p>
+
+<p><code>
+java -javaagent:../rest/target/ROOT/WEB-INF/lib/jamm-0.2.5.jar -jar target/usergrid-launcher-*.jar
+</code></p>
+
+<p>目前是发现在 rest 中的 WEB-INF 下有 jamm 的 jar</p>
+
+<p>另一种就是改 launcher 目录下的 launch 脚本， 向 JVM_OPTS 中加上面的参数， 再使用 launch 脚本来启动应用</p>
+
+<p>启动时， 除了第一次勾选 Initialize Database on Start， 以后启动时都不要勾， 不然前面创建的数据就全没了</p>
+
+<p>另外， 启动时也可以加 -db, -init option 来指定是 Start Database 还是 Initialize Database， 这个详细情况只能看源代码了， 查看 launch 的 pom.xml 找到 main class 跟进去看就可以， 我就懒得把类名写在这儿了， 都还是比较简单的</p>
+
+<p>客户端在使用时， (以 iOS 为例) 初始化时把自己的 stack launcher 的地址作为 initWithOrganizationId:withApplicationID:baseURL 作为第三个参数传递过去， 客户端的文档比较差。</p>
+]]></content>
+  </entry>
+  
+</feed>
