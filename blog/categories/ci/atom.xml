@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ci | 小重山]]></title>
+  <link href="http://jesselivingston.github.io/blog/categories/ci/atom.xml" rel="self"/>
+  <link href="http://jesselivingston.github.io/"/>
+  <updated>2015-09-05T17:38:08+08:00</updated>
+  <id>http://jesselivingston.github.io/</id>
+  <author>
+    <name><![CDATA[Livingston Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Run Jenkins on Jetty]]></title>
+    <link href="http://jesselivingston.github.io/blog/2015/09/05/run-jenkins-on-jetty/"/>
+    <updated>2015-09-05T17:06:59+08:00</updated>
+    <id>http://jesselivingston.github.io/blog/2015/09/05/run-jenkins-on-jetty</id>
+    <content type="html"><![CDATA[<p>Download jetty
+Download jenkins.war</p>
+
+<p>copy the jenkins.war into jetty&rsquo;s webapps</p>
+
+<p><strong>Create</strong> jenkins.xml <strong>in webapps, content:</strong></p>
+
+<pre><code>&lt;Configure class="org.eclipse.jetty.webapp.WebAppContext"&gt;
+    &lt;Set name="contextPath"&gt;/jenkins&lt;/Set&gt;
+    &lt;Set name="war"&gt;&lt;SystemProperty name="jetty.home" default="."/&gt;/webapps/jenkins.war&lt;/Set&gt;
+    &lt;Get name="securityHandler"&gt;
+        &lt;Set name="loginService"&gt;
+            &lt;New class="org.eclipse.jetty.security.HashLoginService"&gt;
+                &lt;Set name="name"&gt;Jenkins Realm&lt;/Set&gt;
+                &lt;Set name="config"&gt;&lt;SystemProperty name="jetty.home" default="."/&gt;/etc/realm.properties&lt;/Set&gt;
+            &lt;/New&gt;
+        &lt;/Set&gt;
+    &lt;/Get&gt;
+&lt;/Configure&gt;`
+</code></pre>
+
+<p><strong>*Otherwise you&rsquo;ll encounter the no LoginService error.</strong></p>
+
+<p>Startup the jetty is very simple.</p>
+]]></content>
+  </entry>
+  
+</feed>

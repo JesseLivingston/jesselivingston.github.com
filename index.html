@@ -9,7 +9,8 @@
   <meta name="author" content="Livingston Chen">
 
   
-  <meta name="description" content="首先是 clone master 代码 git clone https://github.com/apache/incubator-usergrid.git build mvn clean install -DskipTests=true 之后就可以到 stack 目录下去启动了 cd &hellip;">
+  <meta name="description" content="Download jetty
+Download jenkins.war copy the jenkins.war into jetty&rsquo;s webapps Create jenkins.xml in webapps, content: &lt;Configure class="org. &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +78,58 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/09/05/run-jenkins-on-jetty/">Run Jenkins on Jetty</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-05T17:06:59+08:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>5</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:06 pm</span></time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Download jetty
+Download jenkins.war</p>
+
+<p>copy the jenkins.war into jetty&rsquo;s webapps</p>
+
+<p><strong>Create</strong> jenkins.xml <strong>in webapps, content:</strong></p>
+
+<pre><code>&lt;Configure class="org.eclipse.jetty.webapp.WebAppContext"&gt;
+    &lt;Set name="contextPath"&gt;/jenkins&lt;/Set&gt;
+    &lt;Set name="war"&gt;&lt;SystemProperty name="jetty.home" default="."/&gt;/webapps/jenkins.war&lt;/Set&gt;
+    &lt;Get name="securityHandler"&gt;
+        &lt;Set name="loginService"&gt;
+            &lt;New class="org.eclipse.jetty.security.HashLoginService"&gt;
+                &lt;Set name="name"&gt;Jenkins Realm&lt;/Set&gt;
+                &lt;Set name="config"&gt;&lt;SystemProperty name="jetty.home" default="."/&gt;/etc/realm.properties&lt;/Set&gt;
+            &lt;/New&gt;
+        &lt;/Set&gt;
+    &lt;/Get&gt;
+&lt;/Configure&gt;`
+</code></pre>
+
+<p><strong>*Otherwise you&rsquo;ll encounter the no LoginService error.</strong></p>
+
+<p>Startup the jetty is very simple.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -456,6 +509,10 @@ java -javaagent:../rest/target/ROOT/WEB-INF/lib/jamm-0.2.5.jar -jar target/userg
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2015/09/05/run-jenkins-on-jetty/">Run Jenkins on Jetty</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2015/08/20/usergrid-usage-notes/">Usergrid Usage Notes</a>
       </li>
     
@@ -469,10 +526,6 @@ java -javaagent:../rest/target/ROOT/WEB-INF/lib/jamm-0.2.5.jar -jar target/userg
     
       <li class="post">
         <a href="/blog/2015/07/25/create-first-form-patch/">Create First Form Patch</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/17/hadoop-tutorial-1/">Hadoop 教程1</a>
       </li>
     
   </ul>
