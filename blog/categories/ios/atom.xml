@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ios | 小重山]]></title>
+  <link href="http://jesselivingston.github.io/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://jesselivingston.github.io/"/>
+  <updated>2016-03-05T00:06:09+08:00</updated>
+  <id>http://jesselivingston.github.io/</id>
+  <author>
+    <name><![CDATA[Livingston Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Resolve a Xcode/iOS License Problem]]></title>
+    <link href="http://jesselivingston.github.io/blog/2015/09/23/resolve-a-xcode-slash-ios-license-problem/"/>
+    <updated>2015-09-23T23:30:55+08:00</updated>
+    <id>http://jesselivingston.github.io/blog/2015/09/23/resolve-a-xcode-slash-ios-license-problem</id>
+    <content type="html"><![CDATA[<p>Throw a exception which message is</p>
+
+<p><strong>Agreeing to the Xcode/iOS license requires admin privileges, please re-run as root via sudo.</strong></p>
+
+<p>when use git or other commands, type</p>
+
+<pre><code>sudo xcodebuild -license
+</code></pre>
+
+<p>in terminal, and then agree the license.</p>
+
+<p>Done.</p>
+]]></content>
+  </entry>
+  
+</feed>

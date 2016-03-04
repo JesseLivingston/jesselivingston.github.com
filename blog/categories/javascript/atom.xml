@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | 小重山]]></title>
+  <link href="http://jesselivingston.github.io/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://jesselivingston.github.io/"/>
+  <updated>2016-03-05T00:06:09+08:00</updated>
+  <id>http://jesselivingston.github.io/</id>
+  <author>
+    <name><![CDATA[Livingston Chen]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Run Envjs-site on Local]]></title>
+    <link href="http://jesselivingston.github.io/blog/2016/03/04/run-envjs-site-on-local/"/>
+    <updated>2016-03-04T23:51:02+08:00</updated>
+    <id>http://jesselivingston.github.io/blog/2016/03/04/run-envjs-site-on-local</id>
+    <content type="html"><![CDATA[<p>As the envjs site <a href="http://www.envjs.com/">http://www.envjs.com/</a> expired, and I want to access the doc and guides of envjs, I will setup a local envjs-site server.</p>
+
+<p>First I need to download appengine java sdk with version 1.2.1, from maven repository <a href="http://mvnrepository.com/artifact/com.google.appengine/appengine-java-sdk/1.2.1,">http://mvnrepository.com/artifact/com.google.appengine/appengine-java-sdk/1.2.1,</a> as it does not exist on google appengine official site.</p>
+
+<p>Then I need to clone or download envjs-site project, and put it under /opt/webapps/</p>
+
+<p>Then I need to modify the dev_appserver.sh, add</p>
+
+<p><code>--jvm_flag=-Dappengine.user.timezone=UTC
+</code></p>
+
+<p>to the java command at last line.</p>
+
+<p>Run it on local:</p>
+
+<p><code>sudo dev_appserver.sh --address=0.0.0.0 path-to-envjs-site
+</code>
+Done.</p>
+]]></content>
+  </entry>
+  
+</feed>

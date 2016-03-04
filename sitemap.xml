@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://jesselivingston.github.io/blog/2016/03/04/run-envjs-site-on-local/</loc>
+    <lastmod>2016-03-04T23:51:02+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://jesselivingston.github.io/blog/2015/11/04/the-sdkman/</loc>
+    <lastmod>2015-11-04T23:43:23+08:00</lastmod>
+  </url>
+  <url>
+    <loc>http://jesselivingston.github.io/blog/2015/09/23/resolve-a-xcode-slash-ios-license-problem/</loc>
+    <lastmod>2015-09-23T23:30:55+08:00</lastmod>
+  </url>
+  <url>
     <loc>http://jesselivingston.github.io/blog/2015/09/05/run-jenkins-on-jetty/</loc>
     <lastmod>2015-09-05T17:06:59+08:00</lastmod>
   </url>
@@ -30,14 +42,14 @@
   </url>
   <url>
     <loc>http://jesselivingston.github.io/blog/archives/</loc>
-    <lastmod>2015-09-05T17:38:08+08:00</lastmod>
+    <lastmod>2016-03-05T00:06:09+08:00</lastmod>
   </url>
   <url>
     <loc>http://jesselivingston.github.io/</loc>
-    <lastmod>2015-09-05T17:38:08+08:00</lastmod>
+    <lastmod>2016-03-05T00:06:09+08:00</lastmod>
   </url>
   <url>
     <loc>http://jesselivingston.github.io/about/me/</loc>
-    <lastmod>2015-09-05T17:38:08+08:00</lastmod>
+    <lastmod>2016-03-05T00:06:09+08:00</lastmod>
   </url>
 </urlset>
